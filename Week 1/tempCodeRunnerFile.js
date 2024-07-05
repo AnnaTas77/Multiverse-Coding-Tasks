@@ -1,2 +1,13 @@
-console.log("Player 1 chose: ", player1);
-console.log("Player 2 chose: ", player2);
+const score = (resultStr) => {
+//   if (resultStr.includes("1")) {
+//     player1score += 1;
+//   }
+
+//   if (resultStr.includes("2")) {
+//     player2score += 1;
+//   }
+
+//   if (resultStr.includes("tie")) {
+//     return;
+//   }
+// };

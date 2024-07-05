@@ -1,6 +1,9 @@
 //Rock, Paper, Scissors Bonus Challenges
 // Stretch: Rock, Paper, Scissors, Lizard, Spock
 
+// Imports the built-in readline module provided by Node.js.
+const readline = require("readline");
+
 const randomChoice = () => {
   const choice = Math.floor(Math.random() * 5);
   if (choice === 0) return "rock";
@@ -78,18 +81,37 @@ const score = (resultStr) => {
   }
 };
 
-const player1 = randomChoice();
-const player2 = randomChoice();
+// Creates a readline interface that we can use in our code.
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-console.log("Player 1 chose: ", player1);
-console.log("Player 2 chose: ", player2);
+// Asks the user a question and gets their answer.
+rl.question(
+  "Please make a choice - rock/paper/scissors/lizard/spock? - ",
+  function (userInput) {
+    const player2 = randomChoice();
+    let result = winner(userInput, player2);
 
-const result = winner(player1, player2);
+    console.log("Player 1 chose: ", userInput);
+    console.log("Player 2 chose: ", player2);
+    console.log(result);
 
-console.log(result);
+    score(result);
+    console.log(`Player 1: ${player1score} --- Player 2: ${player2score}`);
+    rl.close();
+  }
+);
 
-score(result);
-console.log(`Player 1: ${player1score} --- Player 2: ${player2score}`);
+// const player1 = randomChoice();
+// const player2 = randomChoice();
 
+// console.log("Player 1 chose: ", player1);
+// console.log("Player 2 chose: ", player2);
+
+// const result = winner(player1, player2);
+
+// console.log(result);
 // console.log(winner("paper", "chicken"));
 // console.log(winner("chicken", "chicken"));
