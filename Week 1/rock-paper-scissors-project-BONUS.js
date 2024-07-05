@@ -32,8 +32,11 @@ const winner = (player1Choice, player2Choice) => {
 
   if (
     (player1Choice === "rock" && player2Choice === "scissors") ||
+    (player1Choice === "rock" && player2Choice === "lizard") ||
     (player1Choice === "paper" && player2Choice === "rock") ||
+    (player1Choice === "paper" && player2Choice === "spock") ||
     (player1Choice === "scissors" && player2Choice === "paper") ||
+    (player1Choice === "scissors" && player2Choice === "lizard") ||
     (player1Choice === "spock" && player2Choice === "rock") ||
     (player1Choice === "spock" && player2Choice === "scissors") ||
     (player1Choice === "lizard" && player2Choice === "paper") ||
@@ -44,14 +47,34 @@ const winner = (player1Choice, player2Choice) => {
 
   if (
     (player2Choice === "rock" && player1Choice === "scissors") ||
+    (player2Choice === "rock" && player1Choice === "lizard") ||
     (player2Choice === "paper" && player1Choice === "rock") ||
+    (player2Choice === "paper" && player1Choice === "spock") ||
     (player2Choice === "scissors" && player1Choice === "paper") ||
+    (player2Choice === "scissors" && player1Choice === "lizard") ||
     (player2Choice === "spock" && player1Choice === "rock") ||
     (player2Choice === "spock" && player1Choice === "scissors") ||
-    (player1Choice === "lizard" && player2Choice === "paper") ||
-    (player1Choice === "lizard" && player2Choice === "spock")
+    (player2Choice === "lizard" && player1Choice === "paper") ||
+    (player2Choice === "lizard" && player1Choice === "spock")
   ) {
     return "Player 2 Wins!";
+  }
+};
+
+let player1score = 0;
+let player2score = 0;
+
+const score = (resultStr) => {
+  if (resultStr.includes("1")) {
+    player1score += 1;
+  }
+
+  if (resultStr.includes("2")) {
+    player2score += 1;
+  }
+
+  if (resultStr.includes("tie")) {
+    return;
   }
 };
 
@@ -64,5 +87,9 @@ console.log("Player 2 chose: ", player2);
 const result = winner(player1, player2);
 
 console.log(result);
-console.log(winner("paper", "chicken"));
-console.log(winner("chicken", "chicken"));
+
+score(result);
+console.log(`Player 1: ${player1score} --- Player 2: ${player2score}`);
+
+// console.log(winner("paper", "chicken"));
+// console.log(winner("chicken", "chicken"));
