@@ -156,16 +156,116 @@ console.log(sumMultiple(1, 2, 10));
 
 // Complete the function random5 so it returns a random integer equal to either 1, 2, 3, 4 or 5.
 
-const random5 = () => {
-  const randomNum = Math.random() * 5 + 1;
-  const result = Math.floor(randomNum);
-  return result;
+// const random5 = () => {
+//   const randomNum = Math.random() * 5 + 1;
+//   const result = Math.floor(randomNum);
+//   return result;
+// };
+
+// console.log(random5());
+// console.log(random5());
+// console.log(random5());
+// console.log(random5());
+// console.log(random5());
+// console.log(random5());
+// console.log(random5());
+
+/** Declare a function, gross2Net() that receives a number grossPay and returns the netPay after deducting Federal and State taxes:
+General Tax, equal to 25% of your “Gross Pay”
+State Tax, equal to 7% of your “Gross Pay”
+Your function should return the number of the “Net Pay” amount after deducting your taxes. */
+
+function gross2Net(grossPay) {
+  const generalTax = grossPay * 0.25;
+  const stateTax = grossPay * 0.07;
+  const netPay = grossPay - generalTax - stateTax;
+  return netPay;
+}
+console.log(gross2Net(100000));
+
+/** Declare a function called maxOfThree that accepts three number arguments.
+maxOfThree should return largest number of the three.*/
+
+function maxOfThree(num1, num2, num3) {
+  return Math.max(num1, num2, num3);
+}
+
+console.log(maxOfThree(1, 10, -12));
+
+/** Declare a function everyWhichWay that accepts three number arguments.
+everyWhichWay should return the following:
+Return 'sum' if the sum of the first two numbers equals the third
+Return 'difference' if the first number minus the second equals the third
+Return 'product' if the product of the first two numbers equals the third
+Return 'fraction' if the first number divided by the second equals the third
+Return null if none of the above are true */
+
+const everyWhichWay = (num1, num2, num3) => {
+  if (num1 + num2 === num3) {
+    return "sum";
+  } else if (num1 - num2 === num3) {
+    return "difference";
+  } else if (num1 * num2 === num3) {
+    return "product";
+  } else if (num1 / num2 === num3) {
+    return "fraction";
+  } else {
+    return null;
+  }
 };
 
-console.log(random5());
-console.log(random5());
-console.log(random5());
-console.log(random5());
-console.log(random5());
-console.log(random5());
-console.log(random5());
+console.log(everyWhichWay(1, 2, 3));
+
+/** Write a function named milesToKM that will take a number of miles as input
+milesToKM returns a string that matches the template:
+"XX miles is equal to YY kilometers!" */
+
+const milesToKM = (miles) => {
+  const km = miles * 1.60934;
+  return `${miles} miles is equal to ${km} kilometers!`;
+};
+
+console.log(milesToKM(90));
+console.log(milesToKM(60));
+
+/** Write a function named isMultiple that will take two inputs.
+isMultiple should return a boolean based on the following conditions:
+true if the second input value is a multiple of the first input value
+false if the second input value is not a multiple of the first input value. */
+
+const isMultiple = (input1, input2) => {
+  if (input2 % input1 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+console.log(isMultiple(10, 100));
+
+/* Write a function called sumOfChars that will take two strings as parameters.
+sumOfChars will count the number of characters in each string, and return the sum of the number of characters of both inputs. */
+
+const sumOfChars = (str1, str2) => {
+  const sum = str1.length + str2.length;
+  return sum;
+};
+
+console.log(sumOfChars("Hello", "World!"));
+
+/** Declare a function named evenOrOdd2 that will take two strings as parameters.
+Your function will add the total number of characters of both strings, and:
+If there are an even number of characters, then return the string “There are an even number of characters.”
+If there are an odd number of characters return the string “There are an odd number of characters.” */
+
+const evenOrOdd2 = (str1, str2) => {
+  const sum = str1.length + str2.length;
+
+  if (sum % 2 === 0) {
+    return "There are an even number of characters.";
+  } else {
+    return "There are an odd number of characters.";
+  }
+};
+
+console.log(evenOrOdd2("What's", "Up"));
