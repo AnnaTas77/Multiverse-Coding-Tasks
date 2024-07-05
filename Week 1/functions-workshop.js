@@ -153,3 +153,15 @@ console.log(sumMultiple(1, 2, 6));
 console.log(sumMultiple(1, 2, 15));
 
 console.log(sumMultiple(1, 2, 10));
+
+// Complete the function random5 so it returns a random integer equal to either 1, 2, 3, 4 or 5.
+
+const random5 = () => {
+  const randomNum = Math.random() * 5 + 1;
+  const result = Math.floor(randomNum);
+  return result;
+};
+
+console.log(random5());
+console.log(random5());
+console.log(random5());
