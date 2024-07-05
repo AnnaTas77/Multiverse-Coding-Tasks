@@ -165,3 +165,7 @@ const random5 = () => {
 console.log(random5());
 console.log(random5());
 console.log(random5());
+console.log(random5());
+console.log(random5());
+console.log(random5());
+console.log(random5());
