@@ -36,29 +36,40 @@ Log the values of player1, player2, and result to verify your game plays correct
 
 const randomChoice = () => {
   const choice = Math.floor(Math.random() * 3);
-  if (choice === 0) {
-    return "rock";
-  } else if (choice === 1) {
-    return "paper";
-  } else {
-    return "scissors";
-  }
+  if (choice === 0) return "rock";
+  if (choice === 1) return "paper";
+  if (choice === 2) return "scissors";
 };
 
 const winner = (player1Choice, player2Choice) => {
+  if (
+    (player1Choice !== "rock" &&
+      player1Choice !== "paper" &&
+      player1Choice !== "scissors") ||
+    (player2Choice !== "rock" &&
+      player2Choice !== "paper" &&
+      player2Choice !== "scissors")
+  ) {
+    return "Invalid input.";
+  }
+
   if (player1Choice === player2Choice) {
-    return "It's a tie";
-  } else if (player1Choice === "rock" && player2Choice === "scissors") {
+    return "It's a tie!";
+  }
+
+  if (
+    (player1Choice === "rock" && player2Choice === "scissors") ||
+    (player1Choice === "paper" && player2Choice === "rock") ||
+    (player1Choice === "scissors" && player2Choice === "paper")
+  ) {
     return "Player 1 Wins!";
-  } else if (player1Choice === "paper" && player2Choice === "scissors") {
-    return "Player 2 Wins!";
-  } else if (player1Choice === "paper" && player2Choice === "rock") {
-    return "Player 1 Wins!";
-  } else if (player2Choice === "rock" && player1Choice === "scissors") {
-    return "Player 2 Wins!";
-  } else if (player2Choice === "paper" && player1Choice === "scissors") {
-    return "Player 1 Wins!";
-  } else if (player2Choice === "paper" && player1Choice === "rock") {
+  }
+
+  if (
+    (player2Choice === "rock" && player1Choice === "scissors") ||
+    (player2Choice === "paper" && player1Choice === "rock") ||
+    (player2Choice === "scissors" && player1Choice === "paper")
+  ) {
     return "Player 2 Wins!";
   }
 };
@@ -72,6 +83,8 @@ console.log("Player 2 chose: ", player2);
 const result = winner(player1, player2);
 
 console.log(result);
+console.log(winner("paper", "chicken"));
+console.log(winner("chicken", "chicken"));
 
 // DO NOT EDIT CODE BELOW
 module.exports = {

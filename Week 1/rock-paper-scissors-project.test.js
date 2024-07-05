@@ -39,9 +39,9 @@ describe("winner", () => {
   });
 
   test("When both arguments are the same value 'It's a tie' is returned", () => {
-    expect(winner("paper", "paper")).toEqual("It's a tie");
-    expect(winner("scissors", "scissors")).toEqual("It's a tie");
-    expect(winner("rock", "rock")).toEqual("It's a tie");
+    expect(winner("paper", "paper")).toEqual("It's a tie!");
+    expect(winner("scissors", "scissors")).toEqual("It's a tie!");
+    expect(winner("rock", "rock")).toEqual("It's a tie!");
   });
 
   test("player2 is the winner for the correct combinations based on the rules", () => {
