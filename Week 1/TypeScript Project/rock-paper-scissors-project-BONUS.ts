@@ -2,9 +2,9 @@
 // Stretch: Rock, Paper, Scissors, Lizard, Spock
 
 // Imports the built-in readline module provided by Node.js.
-const readline = require("readline");
+const readline = require("readline/promises");
 
-const randomChoice = ():string | void => {
+const randomChoice = ():string  => {
   const choice = Math.floor(Math.random() * 5);
   if (choice === 0) return "rock";
   if (choice === 1) return "paper";
@@ -13,7 +13,7 @@ const randomChoice = ():string | void => {
   if (choice === 4) return "lizard";
 };
 
-const winner = (player1Choice:string, player2Choice:string):string | void => {
+const winner = (player1Choice:string, player2Choice:string):string | any => {
   if (
     (player1Choice !== "rock" &&
       player1Choice !== "paper" &&
@@ -26,7 +26,7 @@ const winner = (player1Choice:string, player2Choice:string):string | void => {
       player2Choice !== "lizard" &&
       player2Choice !== "spock")
   ) {
-    return "Invalid input.";
+    return "Invalid input. Please try again.";
   }
 
   if (player1Choice === player2Choice) {
@@ -67,16 +67,23 @@ const winner = (player1Choice:string, player2Choice:string):string | void => {
 let player1score:number = 0;
 let player2score: number = 0;
 
-const score = (resultStr:string):void => {
-  if (resultStr.includes("1")) {
-    player1score += 1;
+const score = (gameObject:{
+  player1choice: string,
+  player2choice: string,
+  result: string,
+  round: number,
+  player1score: number,
+  player2score: number,
+}) => {
+  if (gameObject.result.includes("1")) {
+    gameObject.player1score += 1;
   }
 
-  if (resultStr.includes("2")) {
-    player2score += 1;
+  if (gameObject.result.includes("2")) {
+    gameObject.player2score += 1;
   }
 
-  if (resultStr.includes("tie")) {
+  if (gameObject.result.includes("tie")) {
     return;
   }
 };
@@ -87,31 +94,64 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-// Asks the user a question and gets their answer.
-rl.question(
-  "Please make a choice - rock/paper/scissors/lizard/spock? - ",
-  function (userInput:string):void {
-    const player2:any = randomChoice();
-    let result:any = winner(userInput, player2);
+function handleUserInput(userInput:string, gameState:{
+  player1choice: string,
+  player2choice: string,
+  result: string,
+  round: number,
+  player1score: number,
+  player2score: number,
+}):any {
+  const player2:string = randomChoice();
+  gameState.result = winner(userInput, player2);
 
-    console.log("Player 1 chose: ", userInput);
-    console.log("Player 2 chose: ", player2);
-    console.log(result);
+  console.log("Player 1 chose: ", userInput);
+  console.log("Player 2 chose: ", player2);
+  console.log(gameState.result);
 
-    score(result);
-    console.log(`Player 1: ${player1score} --- Player 2: ${player2score}`);
-    rl.close();
+  score(gameState);
+
+  console.log(
+    `Round: ${gameState.round} \n Player 1 (You): ${gameState.player1score}\n Player 2: ${gameState.player2score}`
+  );
+}
+
+async function askQuestions() {
+  const gameState: {
+    player1choice: string,
+    player2choice: string,
+    result: string,
+    round: number,
+    player1score: number,
+    player2score: number,
+  } = {
+    player1choice: '',
+    player2choice: '',
+    result: '',
+    round: 0,
+    player1score: 0,
+    player2score: 0,
+  };
+  let i:number = 10;
+  while (i > 0) {
+    let userAnswer:string;
+    if (gameState.result === "Invalid input. Please try again.") {
+      userAnswer = await rl.question(
+        "Please make a choice - rock/paper/scissors/lizard/spock? - "
+      );
+    }
+
+    if (gameState.result !== "Invalid input. Please try again.") {
+      i -= 1;
+      userAnswer = await rl.question(
+        "Please make a choice - rock/paper/scissors/lizard/spock? - "
+      );
+      gameState.round += 1;
+    }
+    handleUserInput(userAnswer, gameState);
   }
-);
+}
 
-// const player1 = randomChoice();
-// const player2 = randomChoice();
+askQuestions();
 
-// console.log("Player 1 chose: ", player1);
-// console.log("Player 2 chose: ", player2);
 
-// const result = winner(player1, player2);
-
-// console.log(result);
-// console.log(winner("paper", "chicken"));
-// console.log(winner("chicken", "chicken"));
