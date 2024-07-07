@@ -48,8 +48,7 @@ var randomChoice = function () {
         return "scissors";
     if (choice === 3)
         return "spock";
-    if (choice === 4)
-        return "lizard";
+    return "lizard";
 };
 var winner = function (player1Choice, player2Choice) {
     if ((player1Choice !== "rock" &&
@@ -91,6 +90,7 @@ var winner = function (player1Choice, player2Choice) {
         (player2Choice === "lizard" && player1Choice === "spock")) {
         return "Player 2 Wins!";
     }
+    return "ERROR: Should never happen!";
 };
 var score = function (gameObject) {
     if (gameObject.result.includes("1")) {
@@ -103,6 +103,17 @@ var score = function (gameObject) {
         return;
     }
 };
+var GameState = /** @class */ (function () {
+    function GameState(player1choice, player2choice, result, round, player1score, player2score) {
+        this.player1choice = player1choice;
+        this.player2choice = player2choice;
+        this.result = result;
+        this.round = round;
+        this.player1score = player1score;
+        this.player2score = player2score;
+    }
+    return GameState;
+}());
 // Creates a readline interface that we can use in our code.
 var rl = readline.createInterface({
     input: process.stdin,
@@ -123,14 +134,7 @@ function askQuestions() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    gameState = {
-                        player1choice: '',
-                        player2choice: '',
-                        result: '',
-                        round: 0,
-                        player1score: 0,
-                        player2score: 0,
-                    };
+                    gameState = new GameState('', '', '', 0, 0, 0);
                     i = 10;
                     _a.label = 1;
                 case 1:

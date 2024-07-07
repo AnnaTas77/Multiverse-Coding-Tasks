@@ -69,14 +69,7 @@ const winner = (player1Choice:string, player2Choice:string):string => {
 
 
 
-const score = (gameObject:{
-  player1choice: string,
-  player2choice: string,
-  result: string,
-  round: number,
-  player1score: number,
-  player2score: number,
-}) => {
+const score = (gameObject:GameState) => {
   if (gameObject.result.includes("1")) {
     gameObject.player1score += 1;
   }
