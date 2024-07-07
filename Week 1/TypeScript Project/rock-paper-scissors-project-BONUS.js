@@ -92,8 +92,6 @@ var winner = function (player1Choice, player2Choice) {
         return "Player 2 Wins!";
     }
 };
-var player1score = 0;
-var player2score = 0;
 var score = function (gameObject) {
     if (gameObject.result.includes("1")) {
         gameObject.player1score += 1;
@@ -142,9 +140,8 @@ function askQuestions() {
                     return [4 /*yield*/, rl.question("Please make a choice - rock/paper/scissors/lizard/spock? - ")];
                 case 2:
                     userAnswer = _a.sent();
-                    _a.label = 3;
+                    return [3 /*break*/, 5];
                 case 3:
-                    if (!(gameState.result !== "Invalid input. Please try again.")) return [3 /*break*/, 5];
                     i -= 1;
                     return [4 /*yield*/, rl.question("Please make a choice - rock/paper/scissors/lizard/spock? - ")];
                 case 4:

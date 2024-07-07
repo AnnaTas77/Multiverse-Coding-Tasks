@@ -64,8 +64,7 @@ const winner = (player1Choice:string, player2Choice:string):string | any => {
   }
 };
 
-let player1score:number = 0;
-let player2score: number = 0;
+
 
 const score = (gameObject:{
   player1choice: string,
@@ -139,9 +138,7 @@ async function askQuestions() {
       userAnswer = await rl.question(
         "Please make a choice - rock/paper/scissors/lizard/spock? - "
       );
-    }
-
-    if (gameState.result !== "Invalid input. Please try again.") {
+    } else {
       i -= 1;
       userAnswer = await rl.question(
         "Please make a choice - rock/paper/scissors/lizard/spock? - "
