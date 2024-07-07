@@ -108,7 +108,7 @@ async function askQuestions() {
     player1score: 0,
     player2score: 0,
   };
-  let i = 3;
+  let i = 10;
   while (i > 0) {
     let userAnswer;
     if (gameState.result === "Invalid input. Please try again.") {
