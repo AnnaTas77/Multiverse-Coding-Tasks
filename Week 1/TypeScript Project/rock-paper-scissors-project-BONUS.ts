@@ -10,10 +10,11 @@ const randomChoice = ():string  => {
   if (choice === 1) return "paper";
   if (choice === 2) return "scissors";
   if (choice === 3) return "spock";
-  if (choice === 4) return "lizard";
+
+  return "lizard";
 };
 
-const winner = (player1Choice:string, player2Choice:string):string | any => {
+const winner = (player1Choice:string, player2Choice:string):string => {
   if (
     (player1Choice !== "rock" &&
       player1Choice !== "paper" &&
@@ -62,6 +63,8 @@ const winner = (player1Choice:string, player2Choice:string):string | any => {
   ) {
     return "Player 2 Wins!";
   }
+
+  return "ERROR: Should never happen!";
 };
 
 
@@ -87,20 +90,36 @@ const score = (gameObject:{
   }
 };
 
+class GameState {
+    player1choice: string;
+    player2choice: string;
+    result: string;
+    round: number;
+    player1score: number;
+    player2score: number;
+
+    constructor(player1choice: string,
+      player2choice: string,
+      result: string,
+      round: number,
+      player1score: number,
+      player2score: number) {
+        this.player1choice = player1choice;
+        this.player2choice = player2choice;
+        this.result = result;
+        this.round = round;
+        this.player1score = player1score;
+        this.player2score = player2score;
+      }
+}
+
 // Creates a readline interface that we can use in our code.
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-function handleUserInput(userInput:string, gameState:{
-  player1choice: string,
-  player2choice: string,
-  result: string,
-  round: number,
-  player1score: number,
-  player2score: number,
-}):any {
+function handleUserInput(userInput:string, gameState: GameState):void {
   const player2:string = randomChoice();
   gameState.result = winner(userInput, player2);
 
@@ -116,21 +135,8 @@ function handleUserInput(userInput:string, gameState:{
 }
 
 async function askQuestions() {
-  const gameState: {
-    player1choice: string,
-    player2choice: string,
-    result: string,
-    round: number,
-    player1score: number,
-    player2score: number,
-  } = {
-    player1choice: '',
-    player2choice: '',
-    result: '',
-    round: 0,
-    player1score: 0,
-    player2score: 0,
-  };
+  const gameState: GameState = new GameState('', '', '', 0, 0 , 0);
+
   let i:number = 10;
   while (i > 0) {
     let userAnswer:string;
