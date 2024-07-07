@@ -2,7 +2,7 @@
 // Stretch: Rock, Paper, Scissors, Lizard, Spock
 
 // Imports the built-in readline module provided by Node.js.
-const readline = require("readline");
+const readline = require("readline/promises");
 
 const randomChoice = () => {
   const choice = Math.floor(Math.random() * 5);
@@ -26,7 +26,7 @@ const winner = (player1Choice, player2Choice) => {
       player2Choice !== "lizard" &&
       player2Choice !== "spock")
   ) {
-    return "Invalid input.";
+    return "Invalid input. Please try again.";
   }
 
   if (player1Choice === player2Choice) {
@@ -64,19 +64,16 @@ const winner = (player1Choice, player2Choice) => {
   }
 };
 
-let player1score = 0;
-let player2score = 0;
-
-const score = (resultStr) => {
-  if (resultStr.includes("1")) {
-    player1score += 1;
+const score = (gameObject) => {
+  if (gameObject.result.includes("1")) {
+    gameObject.player1score += 1;
   }
 
-  if (resultStr.includes("2")) {
-    player2score += 1;
+  if (gameObject.result.includes("2")) {
+    gameObject.player2score += 1;
   }
 
-  if (resultStr.includes("tie")) {
+  if (gameObject.result.includes("tie")) {
     return;
   }
 };
@@ -87,31 +84,48 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-// Asks the user a question and gets their answer.
-rl.question(
-  "Please make a choice - rock/paper/scissors/lizard/spock? - ",
-  function (userInput) {
-    const player2 = randomChoice();
-    let result = winner(userInput, player2);
+function handleUserInput(userInput, gameState) {
+  const player2 = randomChoice();
+  gameState.result = winner(userInput, player2);
 
-    console.log("Player 1 chose: ", userInput);
-    console.log("Player 2 chose: ", player2);
-    console.log(result);
+  console.log("Player 1 chose: ", userInput);
+  console.log("Player 2 chose: ", player2);
+  console.log(gameState.result);
 
-    score(result);
-    console.log(`Player 1: ${player1score} --- Player 2: ${player2score}`);
-    rl.close();
+  score(gameState);
+
+  console.log(
+    `Round: ${gameState.round} \n Player 1 (You): ${gameState.player1score}\n Player 2: ${gameState.player2score}`
+  );
+}
+
+async function askQuestions() {
+  const gameState = {
+    player1choice: "",
+    player2choice: "",
+    result: "",
+    round: 0,
+    player1score: 0,
+    player2score: 0,
+  };
+  let i = 3;
+  while (i > 0) {
+    let userAnswer;
+    if (gameState.result === "Invalid input. Please try again.") {
+      userAnswer = await rl.question(
+        "Please make a choice - rock/paper/scissors/lizard/spock? - "
+      );
+    }
+
+    if (gameState.result !== "Invalid input. Please try again.") {
+      i -= 1;
+      userAnswer = await rl.question(
+        "Please make a choice - rock/paper/scissors/lizard/spock? - "
+      );
+      gameState.round += 1;
+    }
+    handleUserInput(userAnswer, gameState);
   }
-);
+}
 
-// const player1 = randomChoice();
-// const player2 = randomChoice();
-
-// console.log("Player 1 chose: ", player1);
-// console.log("Player 2 chose: ", player2);
-
-// const result = winner(player1, player2);
-
-// console.log(result);
-// console.log(winner("paper", "chicken"));
-// console.log(winner("chicken", "chicken"));
+askQuestions();
