@@ -18,14 +18,9 @@ let bootcampData;
 bootcampData = array2D[1][1];
 array2D[0][1] = true;
 
+console.log(bootcampData);
 // console.table(array2D);
 // console.log(array2D);
-
-// DO NOT EDIT
-module.exports = {
-  array2D,
-  bootcampData,
-};
 
 /**  editValue Coding Challenge 
 Directions: An accounts spreadsheet has been created in the editor for you already. It contains some financial data for your company.
@@ -45,12 +40,6 @@ const accounts = [
 const editValue = (sheet, i, j, newVal) => {
   sheet[i][j] = newVal;
   return sheet;
-};
-
-// DO NOT EDIT
-module.exports = {
-  accounts,
-  editValue,
 };
 
 /** Define a function copyPasteCell(sheet, i, j, k, l) that copies the value stored in row i, column j and pastes (replaces) it into row k, column l. Return the modified array.
@@ -80,12 +69,6 @@ function copyPasteCell(sheet, i, j, k, l) {
 }
 
 // console.log(copyPasteCell(accounts2,0,0,1,0))
-
-// DO NOT EDIT
-module.exports = {
-  accounts,
-  copyPasteCell,
-};
 
 /** Add Row Coding Challenge 
 Directions: Complete the following steps:
@@ -121,12 +104,6 @@ const letters = [
 ];
 
 console.log(addRow(letters, ["e", "f"]));
-
-// DO NOT EDIT
-module.exports = {
-  accounts,
-  addRow,
-};
 
 /** Invention Test Coding Challenge
 Directions:  What else can you do with a spreadsheet? Here are a few challenges to try out:
@@ -235,7 +212,12 @@ console.log("reverseRows: ", reverseRows(letters6)); // Returns [["c", "d"], ["a
 
 // DO NOT EDIT
 module.exports = {
+  array2D,
+  bootcampData,
   accounts,
+  editValue,
+  copyPasteCell,
+  addRow,
   copyPasteRow,
   cutPasteCell,
   insertRow,
