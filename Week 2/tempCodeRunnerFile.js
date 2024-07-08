@@ -1,0 +1,1 @@
+console.table(array2D);
