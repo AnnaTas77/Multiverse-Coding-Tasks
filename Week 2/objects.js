@@ -141,25 +141,71 @@ if (wallet.hasCash() && wallet.pay(5.5)) {
   console.log("Insufficient funds.");
 } */
 
+// const wallet = {
+//   balance: 9.52,
+//   // Define your methods here
+//   hasCash() {
+//     if (this.balance > 0) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   },
+//   pay(amount) {
+//     if (this.balance >= amount) {
+//       this.balance -= amount;
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   },
+// };
+
+// // DO NOT EDIT
+// module.exports = wallet;
+
+// OBJECTS EXTENSION
+
+/* Update Prop Coding Challenge
+Directions: 
+
+ 
+
+Define a function updateProp(obj, key, val). The values of the parameters will be an object to update (obj), a property name as a string (key), and a value for the property (val). The function should assign obj[key] to val and return the new value of the property.
+Test your code! Once all tests are passing, move on to the next page.
+Examples
 const wallet = {
-  balance: 9.52,
-  // Define your methods here
-  hasCash() {
-    if (this.balance > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  },
-  pay(amount) {
-    if (this.balance >= amount) {
-      this.balance -= amount;
-      return true;
-    } else {
-      return false;
-    }
-  },
+  color: "black",
+  hasCash: true,
 };
 
-// DO NOT EDIT
-module.exports = wallet;
+const newColor = updateProp(wallet, "color", "blue");
+console.log(wallet.color); // Logs "blue"
+console.log(newColor); // Logs "blue"
+
+const house = {
+  sqFt: 1500,
+  isOccupied: true,
+};
+
+const newSqFt = updateProp(house, "sqFt", 2000);
+console.log(house.sqFt); // Logs 2000
+console.log(newSqFt); // Logs 2000
+
+Hint: Remember that there is a difference between obj[key] and obj["key"]. 
+*/
+
+// Provided for optional debugging
+const wallet2 = {
+  color: "black",
+  hasCash: true,
+};
+
+// Write your code here
+
+const updateProp = (obj, key, val) => {
+  obj[key] = val;
+  return obj[key];
+};
+
+console.log("Updates wallet2: ", updateProp(wallet2, "color", "red"));
