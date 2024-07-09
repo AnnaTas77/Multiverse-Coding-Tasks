@@ -72,3 +72,94 @@ const car = {
 };
 
 console.log(car);
+
+const car2 = {
+  model: "Ford",
+  color: "Green",
+  numWheels: 4,
+  // Define your method here
+  paint(newColor) {
+    this.color = newColor;
+    return this.color;
+  },
+};
+
+console.log("Before: ", car.color);
+console.log(car2.paint("Black"));
+// console.log("After: ", car.color);
+
+/** To Do Coding Challenge 
+Directions: Complete the following steps:   
+
+A todo constant has been assigned to an object that represents an item on a to-do list.
+
+Add a toggleDone() method to the object. If the value of the object's done property is true, the method should change it to false. If the value of the object's done property is false, the method should change it to true. In both cases, the method should return the new value of the object's done property.
+Test your code! Once all tests are passing, move on to the next page.
+Example
+const todo = {
+  description: "Wash the car",
+  done: false,
+  // Your method would be here...
+};
+
+console.log(todo.done); // Logs false
+todo.toggleDone();
+console.log(todo.done); // Logs true */
+
+const todo = {
+  description: "Wash the car",
+  done: false,
+  // Define your method here
+  toggleDone() {
+    return (this.done = !this.done);
+  },
+};
+
+console.log(todo.toggleDone());
+console.log(todo.toggleDone());
+console.log(todo.toggleDone());
+
+/** Wallet Coding Challenge 
+Directions: Complete the following steps:   
+
+A wallet constant has been assigned to an object that represents a wallet.
+
+Add a hasCash() method to the object. It should return true if the value of the object's balance property is greater than 0, otherwise it should return false.
+Add a pay(amount) method to the object. It should attempt to subtract the value of the amount parameter from the value of the object's balance property. If there is enough money, the method should return true after subtracting the amount. Otherwise, the method should leave the balance property unchanged and simply return false.
+Test your code! Once all tests are passing, move on to the next page. 
+
+Example
+const wallet = {
+  balance: 10,
+  // Your methods would be here...
+};
+
+if (wallet.hasCash() && wallet.pay(5.5)) {
+  // Logs "Your new balance is 4.5."
+  console.log(`Your new balance is ${wallet.balance}.`);
+} else {
+  console.log("Insufficient funds.");
+} */
+
+const wallet = {
+  balance: 9.52,
+  // Define your methods here
+  hasCash() {
+    if (this.balance > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+  pay(amount) {
+    if (this.balance >= amount) {
+      this.balance -= amount;
+      return true;
+    } else {
+      return false;
+    }
+  },
+};
+
+// DO NOT EDIT
+module.exports = wallet;
