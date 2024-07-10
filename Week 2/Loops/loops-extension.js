@@ -129,3 +129,141 @@ function gooseFilter(arr) {
 }
 
 console.log(gooseFilter(["Mallard", "African"]));
+
+/** internationalPets Coding Challenge
+Directions: Complete the following activity:
+
+Write a function internationalPets that takes an animal name and a country name as arguments.
+Using the globally-defined animalNoises array, internationalPets should return a sentence that explains which sound the animal makes in the given country.
+Note that animalNoises contains nested objects. For example:
+
+console.log(animalNoises[0].dog.America); // => 'Woof! Woof!'
+console.log(animalNoises[1]['cat']['Korea']); // => 'Nyaong!' */
+
+// DO NOT EDIT
+let animalNoises = [
+  {
+    dog: {
+      America: "Woof! Woof!",
+      Germany: "Wau Wau!",
+      England: "Bow wow!",
+      Uruguay: "Jua jua!",
+      Afrikaans: "Blaf!",
+      Korea: "Mong mong!",
+      Iceland: "Voff voff!",
+      Albania: "Ham!",
+      Algeria: "Ouaf ouaf!",
+    },
+  },
+  {
+    cat: {
+      America: "Meow",
+      Germany: "Miauw!",
+      England: "mew mew",
+      Uruguay: "Miau Miau!",
+      Afrikaans: "Purr",
+      Korea: "Nyaong!",
+      Iceland: "Kurnau!",
+      Albania: "Miau",
+      Algeria: "Miaou!",
+    },
+  },
+  {
+    chicken: {
+      America: "Cluck cluck",
+      Germany: "tock tock tock",
+      England: "Cluck Cluck",
+      Uruguay: "gut gut gdak",
+      Afrikaans: "kukeleku",
+      Korea: "ko-ko-ko",
+      Iceland: "Chuck-chuck!",
+      Albania: "Kotkot",
+      Algeria: "Cotcotcodet",
+    },
+  },
+];
+// DO NOT EDIT CODE ABOVE
+
+// Write your code here
+
+function internationalPets(animalName, country) {
+  animalName = animalName.charAt(0).toUpperCase() + animalName.slice(1);
+
+  let resultNoise;
+
+  for (let i = 0; i < animalNoises.length; i++) {
+    let currentInnerObj = animalNoises[i];
+    for (let key in currentInnerObj) {
+      if (key === animalName.toLowerCase()) {
+        resultNoise = currentInnerObj[key][country];
+        console.log(resultNoise);
+        break;
+      }
+    }
+  }
+  console.log(resultNoise);
+  return `${animalName}s in ${country} say ${resultNoise}`;
+}
+
+// DO NOT EDIT CODE BELOW
+
+console.log(internationalPets("cat", "Korea"));
+
+/** onlyLetters Coding Challenge
+Directions: Complete the following activity:
+
+Write a function onlyLetters that takes a string as a parameter.
+onlyLetters should return a new string with the numbers filtered out. */
+
+// Write your code here
+
+function onlyLetters(str) {
+  let resultStr = "";
+
+  for (let i = 0; i < str.length; i++) {
+    if (isNaN(str[i])) {
+      resultStr += str[i];
+    }
+    continue;
+  }
+
+  return resultStr;
+}
+
+console.log(onlyLetters("1o2n3l4y5l6e7t8t9e10r11s12"));
+
+/** getSize Coding Challenge
+Directions: Complete the following activity:
+
+Write a function named getSize that will take an Object as parameter.
+Your function is to return the size of that object. (The amount of key-value pairs)
+Run your code.
+Test your code.
+Examples
+getSize({
+  name: "Multiverse",
+  language: "JavaScript", 
+  week: 2
+}); //-> 3
+
+getSize({
+  color: "black",
+  type: "pen"
+}); // -> 2 */
+
+function getSize(obj) {
+  let keyNumber = 0;
+  for (let key in obj) {
+    keyNumber++;
+  }
+  return keyNumber;
+}
+
+console.log(
+  getSize({
+    color: "black",
+    type: "pen",
+  })
+);
+
+
