@@ -266,4 +266,346 @@ console.log(
   })
 );
 
+/* compareObjects Coding Challenge
+Directions: Complete the following activity:
 
+Define a function, compareObjects, that accepts two objects as arguments.
+compareObjects should return true if both objects have exactly the same key/value pairs. Otherwise, compareObjects should return false. Assume the objects are not nested.
+Run your code.
+Test your code.
+Examples
+compareObjects({ name: 'nick' }, { name: 'nick' }) // -> true
+compareObjects({ name: 'zeke' }, { name: 'zeke', age: 12 }) // -> false
+Hint: We cannot directly check if one object is strictly equal to the other, since (unlike Strings/Numbers) Arrays and Objects are Pass-By-Reference, meaning two different objects with the exact same key-value pairs will not be equal to each other. For example:
+
+const obj1 = {
+  luckyNumber: 7
+};
+
+const obj2 = {
+  luckyNumber: 7
+};
+
+console.log(obj1 === obj1); // => true
+console.log(obj1 === obj2); // => false
+*/
+
+function compareObjects(obj1, obj2) {
+  let obj1ToStr = JSON.stringify(obj1);
+  let obj2ToStr = JSON.stringify(obj2);
+
+  return obj1ToStr === obj2ToStr;
+}
+
+console.log(compareObjects({ a: 1, b: 2 }, { a: 1, b: 2 }));
+
+/* frequencyAnalysis Coding Challenge
+Directions: Complete the following activity:
+
+Define a function frequencyAnalysis that accepts a string of lower-case letters as a parameter.
+frequencyAnalysis should return an object containing the amount of times each letter appeared in the string.
+Run your code.
+Test your code.
+Example
+frequencyAnalysis('abca'); // => {a: 2, b: 1, c: 1}
+*/
+
+function frequencyAnalysis(str) {
+  const myObj = {};
+
+  for (let i = 0; i < str.length; i++) {
+    let currentLetter = str[i];
+    let arrayOfKeysInMyObj = Object.keys(myObj);
+
+    if (!arrayOfKeysInMyObj.includes(str[i])) {
+      myObj[currentLetter] = 1;
+    } else {
+      myObj[currentLetter] += 1;
+    }
+  }
+  return myObj;
+}
+
+console.log(frequencyAnalysis("i like pumpkins"));
+
+/* dogBreeder Coding Challenge
+Directions: Complete the following activity:
+
+Define a function, dogBreeder, that accepts up to two optional arguments:
+name (string)
+age (number)
+dogBreeder should return an object that represents a new dog! If the user doesn’t define a name, assume the dog’s name is 'Steve’. If the user doesn’t define the dog’s age, assume the dog’s age is 0.
+Run your code.
+Test your code.
+Examples
+dogBreeder('Sam', 12) // => {name: 'Sam', age: 12}
+
+dogBreeder(15) // => {name:'Steve', age: 15}
+
+dogBreeder('Sam') // => {name:'Sam', age: 0}
+
+dogBreeder() // => {name: 'Steve', age: 0} 
+*/
+
+function dogBreeder(name = "Steve", age = 0) {
+  const dogObj = {};
+  if (isNaN(name)) {
+    dogObj["name"] = name;
+    dogObj["age"] = age;
+  } else {
+    dogObj["name"] = "Steve";
+    dogObj["age"] = name;
+  }
+
+  return dogObj;
+}
+
+console.log(dogBreeder(12));
+console.log(dogBreeder("Snoopy", 3));
+
+/* leetTranslator Coding Challenge
+Directions: Complete the following activity:
+
+“Leet” or 1337 is a popular alternative alphabet used by internet "hackers".
+
+Define a function called leetTranslator that takes a string of normal characters as a parameter.
+leetTranslator should return a new string that is the translation of the original string into leet.
+The leet codex is below, along with an array of English letters and an array of the corresponding leet characters. Use the two arrays to create a leetCodex object to use in making the translations.
+Run your code.
+Test your code.
+ 
+Examples
+/*
+Leet Codex:
+        A -> @
+        B -> 8
+        C -> (
+        D -> |)
+        E -> 3
+        F -> ph
+        G -> g
+        H -> #
+        I -> l
+        J -> _|
+        K -> |<
+        L -> 1
+        M -> |'|'|
+        N -> /\/
+        O -> 0
+        P -> |D
+        Q -> (,)
+        R -> |2
+        S -> 5
+        T -> +
+        U -> |_|
+        V -> |/
+        W -> |/|/'
+        X -> ><
+        Y -> j
+        Z -> 2
+*/
+
+// let letters = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
+// let leetChars = ['@', '8', '(', '|)', '3', 'ph', 'g', '#','l', '_|', '|<', '1', "|'|'|", '/\/', '0', '|D', '(,)', '|2', '5', '+', '|_|', '|/', "|/|/'",'><', 'j', '2'];
+
+// leetTranslator('Multiverse'); // => "|'|'||_|1+l|/3|253"
+
+// DO NOT EDIT
+let letters = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+let leetChars = [
+  "@",
+  "8",
+  "(",
+  "|)",
+  "3",
+  "ph",
+  "g",
+  "#",
+  "l",
+  "_|",
+  "|<",
+  "1",
+  "|'|'|",
+  "//",
+  "0",
+  "|D",
+  "(,)",
+  "|2",
+  "5",
+  "+",
+  "|_|",
+  "|/",
+  "|/|/'",
+  "><",
+  "j",
+  "2",
+];
+// DO NOT EDIT CODE ABOVE
+
+// Write your code here
+
+function leetTranslator(str) {
+  str = str.toLowerCase();
+  let translationStr = "";
+
+  const leetCodexObject = {};
+
+  for (let i = 0; i < letters.length; i++) {
+    let currentLetter = letters[i];
+    let currentLeetChar = leetChars[i];
+    leetCodexObject[currentLetter] = currentLeetChar;
+  }
+  // console.log(leetCodexObject)
+
+  for (let j = 0; j < str.length; j++) {
+    let translatedLetter = leetCodexObject[str[j]];
+    // console.log(translatedLetter)
+    translationStr += translatedLetter;
+  }
+  return translationStr;
+}
+
+console.log(leetTranslator("Multiverse")); // => "|'|'||_|1+l|/3|253"
+
+/** attendanceCheck Coding Challenge
+Directions: Complete the following activity:
+
+Define a function, attendanceCheck, that accepts a string parameter corresponding to a day of the week.
+Using the globally-defined classRoom array, attendanceCheck should return a new array with only the names of the students present on the inputted day of the week.
+Run your code.
+Test your code.
+Examples
+attendanceCheck('Monday'); // => ['Marnie', 'Shoshanna']
+attendanceCheck('Wednesday'); // => ['Marnie', 'Lena'] */
+
+// DO NOT EDIT CODE
+let classRoom = [
+  {
+    Marnie: [
+      {
+        Monday: true,
+      },
+      {
+        Tuesday: true,
+      },
+      {
+        Wednesday: true,
+      },
+      {
+        Thursday: true,
+      },
+      {
+        Friday: true,
+      },
+    ],
+  },
+  {
+    Lena: [
+      {
+        Monday: false,
+      },
+      {
+        Tuesday: false,
+      },
+      {
+        Wednesday: true,
+      },
+      {
+        Thursday: false,
+      },
+      {
+        Friday: true,
+      },
+    ],
+  },
+  {
+    Shoshanna: [
+      {
+        Monday: true,
+      },
+      {
+        Tuesday: true,
+      },
+      {
+        Wednesday: false,
+      },
+      {
+        Thursday: true,
+      },
+      {
+        Friday: false,
+      },
+    ],
+  },
+  {
+    Jessa: [
+      {
+        Monday: false,
+      },
+      {
+        Tuesday: false,
+      },
+      {
+        Wednesday: false,
+      },
+      {
+        Thursday: false,
+      },
+      {
+        Friday: true,
+      },
+    ],
+  },
+];
+// DO NOT EDIT CODE ABOVE
+
+// Write your code here
+function attendanceCheck(dayOfTheWeek) {
+  const arrayOfAttendees = [];
+  for (let i = 0; i < classRoom.length; i++) {
+    let innerObject = classRoom[i];
+    // console.log(innerObject)
+    for (const [key, value] of Object.entries(innerObject)) {
+      let currentPerson = key;
+      let arrayOfDays = value;
+      //   console.log(arrayOfDays)
+      for (const index in arrayOfDays) {
+        let miniObject = arrayOfDays[index];
+        //   console.log('Here', miniObject)
+        if (miniObject[dayOfTheWeek]) {
+          arrayOfAttendees.push(currentPerson);
+        }
+      }
+    }
+  }
+  return arrayOfAttendees;
+}
+
+console.log(attendanceCheck("Monday"));
