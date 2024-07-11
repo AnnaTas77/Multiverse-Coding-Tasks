@@ -12,6 +12,76 @@ function logObject(obj) {
   }
 }
 
+const person = {
+  name: "Alice Smith",
+  age: 25,
+  address: {
+    street: "456 Elm St",
+    city: "Sometown",
+    country: "USA",
+  },
+  contact: {
+    email: "alice@example.com",
+    phone: {
+      home: "123-456-7890",
+      mobile: "987-654-3210",
+    },
+  },
+};
+
+const library = {
+  name: "Tech Library",
+  location: "City Center",
+  books: {
+    "Web Development 101": {
+      author: {
+        name: "Bob Johnson",
+        age: 35,
+        country: "UK",
+      },
+    },
+    "JavaScript Advanced Techniques": {
+      author: {
+        name: "Emily Brown",
+        age: 40,
+        country: "USA",
+      },
+    },
+  },
+};
+
+const company = {
+  name: "ABC Corp",
+  location: "Business District",
+  departments: {
+    sales: {
+      manager: "John Doe",
+      employees: {
+        "Alice Smith": {
+          position: "Sales Rep",
+        },
+        "Bob Johnson": {
+          position: "Sales Manager",
+        },
+      },
+    },
+    marketing: {
+      manager: "Jane Brown",
+      employees: {
+        "Charlie Davis": {
+          position: "Marketing Specialist",
+        },
+        "Eva White": {
+          position: "Marketing Director",
+        },
+      },
+    },
+  },
+};
+
+logObject(person);
+// logObject(library);
+// logObject(company);
 /**
 Recursion is when a function must call itself in order to resolve a solution.
  */
@@ -187,10 +257,48 @@ function reverseArray(arr) {
   return myReversedArray;
 }
 
-let returnedValue = reverseArray(["my!", "oh", "bears", "and", "tigers", "and", "lions"]);
+let returnedValue = reverseArray([
+  "my!",
+  "oh",
+  "bears",
+  "and",
+  "tigers",
+  "and",
+  "lions",
+]);
 console.log(returnedValue);
 
 console.log(reverseArray([1, 2, 3]));
+
+/** sumDigits Coding Challenge 
+Directions: Complete the activity below:
+
+Write a function, sumDigits, that sums up all the digits of a number passed in as an argument. You can assume that the argument will be a positive integer. Use recursion. */
+
+function sumDigits(num) {
+  let result = 0;
+  const numToArray = [...String(num)];
+
+  if (numToArray.length === 1) {
+    return (result += num);
+  }
+
+  while (numToArray.length >= 1) {
+    console.log(numToArray);
+    let lastChar = numToArray.pop();
+    let lastCharToNum = Number(lastChar);
+    result += lastCharToNum;
+    // console.log('HERE', result)
+
+    let arrayToNumber = Number(numToArray.join(""));
+    sumDigits(arrayToNumber);
+  }
+
+  return result;
+}
+
+// console.log(sumDigits(123))
+console.log(sumDigits(333));
 
 // DO NOT EDIT CODE BELOW
 
@@ -201,4 +309,5 @@ module.exports = {
   backwardString,
   countToTen,
   reverseArray,
+  sumDigits,
 };

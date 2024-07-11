@@ -5,6 +5,7 @@ const {
   backwardString,
   countToTen,
   reverseArray,
+  sumDigits,
 } = require("./recursion");
 
 // sumAll
@@ -139,4 +140,20 @@ it("returns a new array, with the elements reversed from the original", () => {
     "oh",
     "my!",
   ]);
+});
+
+// Sum Digits
+
+it("is a function", () => {
+  expect(typeof sumDigits).toEqual("function");
+});
+
+it("returns a number", () => {
+  let returnedValue = sumDigits(123);
+  expect(typeof returnedValue).toEqual("number");
+});
+
+it("returns the sum of the digits from the passed-in number", () => {
+  let returnedValue = sumDigits(333);
+  expect(returnedValue).toEqual(9);
 });
