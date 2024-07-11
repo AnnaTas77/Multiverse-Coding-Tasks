@@ -284,7 +284,6 @@ function sumDigits(num) {
   }
 
   while (numToArray.length >= 1) {
-    console.log(numToArray);
     let lastChar = numToArray.pop();
     let lastCharToNum = Number(lastChar);
     result += lastCharToNum;
@@ -299,6 +298,29 @@ function sumDigits(num) {
 
 // console.log(sumDigits(123))
 console.log(sumDigits(333));
+
+// ADDITIONAL TASKS
+
+function funcOne(n) {
+  if (n >= 10) {
+    return;
+  } else {
+    console.log('FuncOne: ', n);
+    funcOne(n + 1);
+  }
+}
+
+funcOne(3);
+
+function funcTwo(n) {
+    if (n <= 0) {
+        return 0;
+    } else {
+        return n + funcTwo(n - 1);
+    }
+}
+
+console.log(funcTwo(4));
 
 // DO NOT EDIT CODE BELOW
 
