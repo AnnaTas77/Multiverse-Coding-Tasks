@@ -1,3 +1,17 @@
+///// RECURSION WITH OBJECT
+
+function logObject(obj) {
+  for (const key in obj) {
+    const value = obj[key];
+
+    if (typeof value === "object") {
+      logObject(value);
+    } else {
+      console.log(key + ": " + value);
+    }
+  }
+}
+
 /**
 Recursion is when a function must call itself in order to resolve a solution.
  */
@@ -147,6 +161,37 @@ function countToTen(num) {
 
 countToTen(8);
 
+/* reverseArray Coding Challenge 
+Directions: Complete the activity below:
+
+Write a function, reverseArray, that accepts an array as an argument
+reverseArray should return a reversed copy of that array. Use recursion. Don’t mutate the original array.
+*/
+
+function reverseArray(arr) {
+  const copyOfArr = [...arr];
+  let myReversedArray = [];
+
+  if (copyOfArr.length === 1) {
+    myReversedArray.push(copyOfArr[0]);
+    return;
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    let lastItem = copyOfArr.pop();
+
+    myReversedArray.push(lastItem);
+    reverseArray(copyOfArr);
+  }
+
+  return myReversedArray;
+}
+
+let returnedValue = reverseArray(["my!", "oh", "bears", "and", "tigers", "and", "lions"]);
+console.log(returnedValue);
+
+console.log(reverseArray([1, 2, 3]));
+
 // DO NOT EDIT CODE BELOW
 
 module.exports = {
@@ -155,4 +200,5 @@ module.exports = {
   factorial,
   backwardString,
   countToTen,
+  reverseArray,
 };
