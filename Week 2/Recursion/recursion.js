@@ -149,4 +149,10 @@ countToTen(8);
 
 // DO NOT EDIT CODE BELOW
 
-module.exports = { backwardString, countToTen };
+module.exports = {
+  positiveDifference,
+  sumAll,
+  factorial,
+  backwardString,
+  countToTen,
+};

@@ -1,4 +1,50 @@
-const { backwardString, countToTen } = require("./recursion");
+const {
+  positiveDifference,
+  sumAll,
+  factorial,
+  backwardString,
+  countToTen,
+} = require("./recursion");
+
+// sumAll
+
+test("sumAll returns a number", () => {
+  expect(typeof sumAll(5)).toEqual("number");
+});
+
+test("sumAll returns correct values", () => {
+  expect(sumAll(5)).toEqual(15);
+  expect(sumAll(3)).toEqual(6);
+  expect(sumAll(10)).toEqual(55);
+});
+
+// Factorial
+
+test("factorial returns a number", () => {
+  expect(typeof factorial(5)).toEqual("number");
+});
+
+test("factorial returns correct values", () => {
+  expect(factorial(3)).toEqual(6);
+  expect(factorial(5)).toEqual(120);
+  expect(factorial(10)).toEqual(3628800);
+});
+
+// Positive Difference
+
+test("positiveDifference returns a number", () => {
+  expect(typeof positiveDifference(10, 3)).toEqual("number");
+});
+
+test("positiveDifference returns a positive number - Example #1", () => {
+  expect(positiveDifference(10, 3)).toEqual(7);
+});
+
+test("positiveDifference returns a positive number - Example #2", () => {
+  expect(positiveDifference(2, 6)).toEqual(4);
+});
+
+// Backward String
 
 it("is a function", () => {
   expect(typeof backwardString).toEqual("function");
