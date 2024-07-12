@@ -88,22 +88,12 @@ function sumDrawer(drawer) {
   // Write your code here
   let totalSum = 0;
 
-  for (let i = 0; i < drawer.length; i++) {
-    const currentInnerObject = drawer[i];
-
-    if (coinsArray.includes(currentInnerObject.name)) {
-      let currentCoinTotal =
-        currentInnerObject.value * currentInnerObject.quantity;
-      let pennyToDollars = currentCoinTotal / 100;
-      totalSum += pennyToDollars;
-    } else {
-      let currentNoteTotal =
-        currentInnerObject.value * currentInnerObject.quantity;
-      let pennyToDollars = currentNoteTotal / 100;
-      totalSum += pennyToDollars;
-    }
+  for (let i = 0; i<drawer.length; i++){
+        const currentInnerObject = drawer[i];
+        let currentTotal = currentInnerObject.value * currentInnerObject.quantity;
+        totalSum += currentTotal;
   }
-  return `$${totalSum.toFixed(2)}`;
+  return `$${(totalSum/100).toFixed(2)}`;
 }
 
 console.log(sumDrawer(drawer));
@@ -113,6 +103,8 @@ console.log(sumDrawer(drawer));
 function canMakeAmount(target, drawer) {
   // Write your code here
 }
+
+console.log(canMakeAmount(613, drawer))
 
 // Level 5: transaction
 
