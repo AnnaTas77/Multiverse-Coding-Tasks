@@ -8,3 +8,17 @@ Test your code.
 Examples
 sumNums(10) -> 55
 sumNums(15) -> 120 */
+
+function sumNums(num) {
+  if (num === 1) {
+    return 1;
+  }
+
+  return num + sumNums(num - 1);
+}
+
+console.log(sumNums(10)); //55
+console.log(sumNums(15)); //120
+
+// DO NOT EDIT CODE BELOW
+module.exports = { sumNums };
