@@ -19,13 +19,16 @@ const drawer = require("./drawer");
 const coinsArray = ["penny", "nickel", "dime", "quarter"];
 const notesArray = ["one", "five", "ten", "twenty", "hundred"];
 
+const findInDrawer = (name, arr) => {
+  arr.find((currentItem) => currentItem.name === name);
+};
+
 // Level 1: removeItem and addItem
 
 function removeItem(name, drawer) {
   // Write your code here
   for (let i = 0; i < drawer.length; i++) {
     const currentInnerObject = drawer[i];
-    //   console.log('Before: ', currentInnerObject)
     if (currentInnerObject.name === name) {
       currentInnerObject.quantity -= 1;
       break;
@@ -40,7 +43,6 @@ function addItem(name, drawer) {
   // Write your code here
   for (let i = 0; i < drawer.length; i++) {
     const currentInnerObject = drawer[i];
-    //   console.log('Before Adding: ', currentInnerObject)
     if (currentInnerObject.name === name) {
       currentInnerObject.quantity += 1;
       break;
@@ -124,11 +126,57 @@ function canMakeAmount(target, drawer) {
 // console.log(canMakeAmount(613, drawer)) // false
 console.log(canMakeAmount(1651, drawer)); //true
 
+// ALTERNATIVE SOLUTION 1 - Level 4 task
+
+// function canMakeAmount(target, drawer) {
+//   for (let i = drawer.length - 1; i >= 0; i--) {
+//     while (drawer[i].quantity > 0 && target - drawer[i].value >= 0) {
+//       target -= drawer[i].value;
+//       drawer[i].quantity--;
+//     }
+//   }
+
+//   return target === 0;
+// }
+
+// ALTERNATIVE SOLUTION 2 - Level 4 task
+
+// function canMakeAmount(target, drawer) {
+//   for (let i = drawer.length - 1; i >= 0; i--) {
+//     while (drawer[i].quantity > 0) {
+//       const diff = target - drawer[i].value;
+//       if (diff < 0) break;
+
+//       target -= drawer[i].value;
+//       drawer[i].quantity--;
+//     }
+//   }
+
+//   return target === 0;
+// }
+////////
+
 // Level 5: transaction
 
 function transaction(cost, paid, drawer) {
   // Write your code here
+  const change = paid - cost;
+
+  if (change === 0){
+       for (let i = drawer.length-1; i>=0; i--){
+       const currentInnerObject = drawer[i];
+
+       while (paid - currentInnerObject.value >=0){
+         paid = paid - currentInnerObject.value;
+         currentInnerObject.quantity += 1
+       }  
+    }      
+  }
+  return drawer
+
 }
+
+console.log(transaction(450, 450, drawer))
 
 // DO NOT EDIT CODE BELOW
 module.exports = {
