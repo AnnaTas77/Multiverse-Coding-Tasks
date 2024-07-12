@@ -88,12 +88,12 @@ function sumDrawer(drawer) {
   // Write your code here
   let totalSum = 0;
 
-  for (let i = 0; i<drawer.length; i++){
-        const currentInnerObject = drawer[i];
-        let currentTotal = currentInnerObject.value * currentInnerObject.quantity;
-        totalSum += currentTotal;
+  for (let i = 0; i < drawer.length; i++) {
+    const currentInnerObject = drawer[i];
+    let currentTotal = currentInnerObject.value * currentInnerObject.quantity;
+    totalSum += currentTotal;
   }
-  return `$${(totalSum/100).toFixed(2)}`;
+  return `$${(totalSum / 100).toFixed(2)}`;
 }
 
 console.log(sumDrawer(drawer));
@@ -102,9 +102,27 @@ console.log(sumDrawer(drawer));
 
 function canMakeAmount(target, drawer) {
   // Write your code here
+  for (let i = drawer.length - 1; i >= 0; i--) {
+    const currentInnerObject = drawer[i];
+    if (
+      target - currentInnerObject.value >= 0 &&
+      currentInnerObject.quantity >= 1
+    ) {
+      while (
+        target - currentInnerObject.value >= 0 &&
+        currentInnerObject.quantity >= 1
+      ) {
+        target -= currentInnerObject.value;
+        currentInnerObject.quantity--;
+      }
+    }
+  }
+
+  return target === 0;
 }
 
-console.log(canMakeAmount(613, drawer))
+// console.log(canMakeAmount(613, drawer)) // false
+console.log(canMakeAmount(1651, drawer)); //true
 
 // Level 5: transaction
 
