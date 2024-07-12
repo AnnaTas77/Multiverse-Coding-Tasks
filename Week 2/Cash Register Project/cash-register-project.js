@@ -190,7 +190,7 @@ function transaction(cost, paid, drawer) {
 
 // console.log('After transaction: ', transaction(450, 450, drawer))
 
-console.log("After transaction: ", transaction(500, 1000, drawer));
+console.log("After transaction: ", transaction(700, 1000, drawer));
 
 // DO NOT EDIT CODE BELOW
 module.exports = {
