@@ -160,23 +160,37 @@ console.log(canMakeAmount(1651, drawer)); //true
 
 function transaction(cost, paid, drawer) {
   // Write your code here
-  const change = paid - cost;
+  let change = paid - cost;
 
-  if (change === 0){
-       for (let i = drawer.length-1; i>=0; i--){
-       const currentInnerObject = drawer[i];
+  for (let i = drawer.length - 1; i >= 0; i--) {
+    const currentInnerObject = drawer[i];
 
-       while (paid - currentInnerObject.value >=0){
-         paid = paid - currentInnerObject.value;
-         currentInnerObject.quantity += 1
-       }  
-    }      
+    while (paid - currentInnerObject.value >= 0) {
+      paid = paid - currentInnerObject.value;
+      currentInnerObject.quantity += 1;
+      // console.log('Remaining from paid: ', paid)
+    }
   }
-  return drawer
+  if (change === 0) {
+    return drawer;
+  } else {
+    console.log("Change: ", change);
+    for (let i = drawer.length - 1; i >= 0; i--) {
+      const currentInnerObject = drawer[i];
 
+      while (change - currentInnerObject.value >= 0) {
+        change = change - currentInnerObject.value;
+        currentInnerObject.quantity -= 1;
+        // console.log('Remaining change: ', change)
+      }
+    }
+    return drawer;
+  }
 }
 
-console.log(transaction(450, 450, drawer))
+// console.log('After transaction: ', transaction(450, 450, drawer))
+
+console.log("After transaction: ", transaction(500, 1000, drawer));
 
 // DO NOT EDIT CODE BELOW
 module.exports = {
