@@ -43,10 +43,13 @@ Return true if the string is a palindrome; otherwise, return false.
  */
 
 function isPalindrome(str) {
+  let isPalindrome
   
+
 }
 
 console.log(isPalindrome("Kayak"));
+console.log(isPalindrome("UFOtofu"))
 
 // DO NOT EDIT BELOW
 module.exports = { countVowels, isPalindrome };
