@@ -171,21 +171,19 @@ function transaction(cost, paid, drawer) {
       // console.log('Remaining from paid: ', paid)
     }
   }
-  if (change === 0) {
-    return drawer;
-  } else {
-    console.log("Change: ", change);
-    for (let i = drawer.length - 1; i >= 0; i--) {
-      const currentInnerObject = drawer[i];
 
-      while (change - currentInnerObject.value >= 0) {
-        change = change - currentInnerObject.value;
-        currentInnerObject.quantity -= 1;
-        // console.log('Remaining change: ', change)
-      }
+  if (change === 0) return drawer;
+  
+  for (let i = drawer.length - 1; i >= 0; i--) {
+    const currentInnerObject = drawer[i];
+
+    while (change - currentInnerObject.value >= 0) {
+      change = change - currentInnerObject.value;
+      currentInnerObject.quantity -= 1;
+      // console.log('Remaining change: ', change)
     }
-    return drawer;
   }
+  return drawer;
 }
 
 // console.log('After transaction: ', transaction(450, 450, drawer))
