@@ -94,16 +94,16 @@ function sumDrawer(drawer) {
     if (coinsArray.includes(currentInnerObject.name)) {
       let currentCoinTotal =
         currentInnerObject.value * currentInnerObject.quantity;
-      let coinsToDollars = currentCoinTotal / 100;
-      totalSum += coinsToDollars;
+      let pennyToDollars = currentCoinTotal / 100;
+      totalSum += pennyToDollars;
     } else {
       let currentNoteTotal =
         currentInnerObject.value * currentInnerObject.quantity;
-      let notesToDollars = currentNoteTotal / 100;
-      totalSum += notesToDollars;
+      let pennyToDollars = currentNoteTotal / 100;
+      totalSum += pennyToDollars;
     }
   }
-  return `$${totalSum}`;
+  return `$${totalSum.toFixed(2)}`;
 }
 
 console.log(sumDrawer(drawer));
