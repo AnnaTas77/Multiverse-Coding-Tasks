@@ -49,13 +49,37 @@ const updatedDrawer = addItem("nickel", drawer); // Adds 1 nickel
 console.log(updatedDrawer);
 
 // Level 2: countCoins and countNotes
+
 function countCoins(drawer) {
   // Write your code here
+  const coinsArray = ["penny", "nickel", "dime", "quarter"];
+  let coinsCount = 0;
+  for (let i = 0; i < drawer.length; i++) {
+    const currentInnerObject = drawer[i];
+    if (coinsArray.includes(currentInnerObject.name)) {
+      const currentCoinQuantity = currentInnerObject.quantity;
+      coinsCount += currentCoinQuantity;
+    }
+  }
+  return coinsCount;
 }
+
+console.log("Coins: ", countCoins(drawer));
 
 function countNotes(drawer) {
   // Write your code here
+  const notesArray = ["one", "five", "ten", "twenty", "hundred"];
+  let notesCount = 0;
+  for (let i = 0; i < drawer.length; i++) {
+    const currentInnerObject = drawer[i];
+    if (notesArray.includes(currentInnerObject.name)) {
+      const currentNotesQuantity = currentInnerObject.quantity;
+      notesCount += currentNotesQuantity;
+    }
+  }
+  return notesCount;
 }
+console.log("Notes: ", countNotes(drawer));
 
 // Level 3: sumDrawer
 
