@@ -16,6 +16,9 @@ transaction(cost, paid, drawer): Calculates the change required from a transacti
 const drawer = require("./drawer");
 // DO NOT EDIT CODE ABOVE
 
+const coinsArray = ["penny", "nickel", "dime", "quarter"];
+const notesArray = ["one", "five", "ten", "twenty", "hundred"];
+
 // Level 1: removeItem and addItem
 
 function removeItem(name, drawer) {
@@ -52,7 +55,6 @@ console.log(updatedDrawer);
 
 function countCoins(drawer) {
   // Write your code here
-  const coinsArray = ["penny", "nickel", "dime", "quarter"];
   let coinsCount = 0;
   for (let i = 0; i < drawer.length; i++) {
     const currentInnerObject = drawer[i];
@@ -68,7 +70,6 @@ console.log("Coins: ", countCoins(drawer));
 
 function countNotes(drawer) {
   // Write your code here
-  const notesArray = ["one", "five", "ten", "twenty", "hundred"];
   let notesCount = 0;
   for (let i = 0; i < drawer.length; i++) {
     const currentInnerObject = drawer[i];
@@ -86,7 +87,6 @@ console.log("Notes: ", countNotes(drawer));
 function sumDrawer(drawer) {
   // Write your code here
   let totalSum = 0;
-  const coinsArray = ["penny", "nickel", "dime", "quarter"];
 
   for (let i = 0; i < drawer.length; i++) {
     const currentInnerObject = drawer[i];
