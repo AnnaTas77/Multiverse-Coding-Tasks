@@ -85,7 +85,28 @@ console.log("Notes: ", countNotes(drawer));
 
 function sumDrawer(drawer) {
   // Write your code here
+  let totalSum = 0;
+  const coinsArray = ["penny", "nickel", "dime", "quarter"];
+
+  for (let i = 0; i < drawer.length; i++) {
+    const currentInnerObject = drawer[i];
+
+    if (coinsArray.includes(currentInnerObject.name)) {
+      let currentCoinTotal =
+        currentInnerObject.value * currentInnerObject.quantity;
+      let coinsToDollars = currentCoinTotal / 100;
+      totalSum += coinsToDollars;
+    } else {
+      let currentNoteTotal =
+        currentInnerObject.value * currentInnerObject.quantity;
+      let notesToDollars = currentNoteTotal / 100;
+      totalSum += notesToDollars;
+    }
+  }
+  return `$${totalSum}`;
 }
+
+console.log(sumDrawer(drawer));
 
 // Level 4: canMakeAmount
 
