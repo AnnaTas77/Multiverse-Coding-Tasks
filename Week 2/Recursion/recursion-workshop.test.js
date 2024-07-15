@@ -1,4 +1,4 @@
-const { sumNums, exponent } = require("./recursion-workshop");
+const { sumNums, exponent, fibonacci } = require("./recursion-workshop");
 
 //sumNums
 
@@ -55,4 +55,30 @@ it("Passes Other Test Cases", () => {
   expect(exponent(100, 3)).toEqual(1000000);
 });
 
-//
+//Recursive Fibonacci
+it("It is a Function", () => {
+  expect(typeof fibonacci).toEqual("function");
+});
+
+it("Returns a Number", () => {
+  expect(typeof fibonacci(4)).toEqual("number");
+});
+
+it("Passes Base Cases", () => {
+  expect(fibonacci(1)).toEqual(1);
+  expect(fibonacci(2)).toEqual(1);
+});
+
+it("Passes Recursive Case", () => {
+  expect(fibonacci(5)).toEqual(5);
+  expect(fibonacci(10)).toEqual(55);
+  expect(fibonacci(12)).toEqual(144);
+});
+
+it("Passes Other Test Cases", () => {
+  expect(fibonacci(16)).toEqual(987);
+  expect(fibonacci(17)).toEqual(1597);
+  expect(fibonacci(30)).toEqual(832040);
+  expect(fibonacci(4)).toEqual(3);
+  expect(fibonacci(23)).toEqual(28657);
+});
