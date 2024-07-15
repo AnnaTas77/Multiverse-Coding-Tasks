@@ -15,17 +15,12 @@ function countVowels(str) {
     return 0;
   }
 
-  if (strToArray.length === 1) {
-    if (vowels.includes(str[0].toLowerCase())) {
-      numOfVowels += 1;
-    }
-  }
+  let firstChar = strToArray.shift();
 
-  if (vowels.includes(strToArray[0].toLowerCase())) {
+  if (vowels.includes(firstChar.toLowerCase())) {
     numOfVowels += 1;
   }
 
-  const removedFirstChar = strToArray.shift();
   return numOfVowels + countVowels(strToArray);
 }
 
@@ -43,24 +38,18 @@ Return true if the string is a palindrome; otherwise, return false.
  */
 
 function isPalindrome(str) {
-  if (str.length === 1) {
+  if (str.length === 1 || str.length === 0) {
     return true;
   }
 
   str = str.toLowerCase();
 
   const strToArray = [...str];
-  let newString = "";
 
-  while (strToArray.length > 0) {
-    const lastChar = strToArray.pop();
+  let lastChar = strToArray.pop();
+  let firstChar = strToArray.shift();
 
-    newString += lastChar;
-
-    // isPalindrome(strToArray.join(""));
-  }
-
-  return newString === str;
+  return lastChar === firstChar && isPalindrome(strToArray.join(""));
 }
 
 console.log(isPalindrome("Kayak"));
