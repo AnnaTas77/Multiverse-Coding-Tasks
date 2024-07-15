@@ -239,33 +239,22 @@ reverseArray should return a reversed copy of that array. Use recursion. Don’t
 */
 
 function reverseArray(arr) {
+  if (arr.length === 1) {
+    return arr[0];
+  }
+
   const copyOfArr = [...arr];
   let myReversedArray = [];
 
-  if (copyOfArr.length === 1) {
-    myReversedArray.push(copyOfArr[0]);
-    return;
-  }
+  let lastItem = copyOfArr.pop();
 
-  for (let i = 0; i < arr.length; i++) {
-    let lastItem = copyOfArr.pop();
-
-    myReversedArray.push(lastItem);
-    reverseArray(copyOfArr);
-  }
-
-  return myReversedArray;
+  myReversedArray.push(lastItem);
+  myReversedArray.push(reverseArray(copyOfArr));
+  return myReversedArray.flat();
 }
 
-let returnedValue = reverseArray([
-  "my!",
-  "oh",
-  "bears",
-  "and",
-  "tigers",
-  "and",
-  "lions",
-]);
+let originalArray = ["my!", "oh", "bears", "and", "tigers", "and", "lions"];
+let returnedValue = reverseArray(originalArray);
 console.log(returnedValue);
 
 console.log(reverseArray([1, 2, 3]));
@@ -276,24 +265,21 @@ Directions: Complete the activity below:
 Write a function, sumDigits, that sums up all the digits of a number passed in as an argument. You can assume that the argument will be a positive integer. Use recursion. */
 
 function sumDigits(num) {
-  let result = 0;
   const numToArray = [...String(num)];
 
   if (numToArray.length === 1) {
-    return (result += num);
+    return num;
   }
 
-  while (numToArray.length >= 1) {
-    let lastChar = numToArray.pop();
-    let lastCharToNum = Number(lastChar);
-    result += lastCharToNum;
-    // console.log('HERE', result)
+  // let firstChar=numToArray.shift()
+  // let result = Number(firstChar)
 
-    let arrayToNumber = Number(numToArray.join(""));
-    sumDigits(arrayToNumber);
-  }
+  // result += sumDigits(Number(numToArray.join('')))
 
-  return result;
+  // return result;
+
+  let firstChar = numToArray.shift();
+  return Number(firstChar) + sumDigits(Number(numToArray.join("")));
 }
 
 // console.log(sumDigits(123))
@@ -305,7 +291,7 @@ function funcOne(n) {
   if (n >= 10) {
     return;
   } else {
-    console.log('FuncOne: ', n);
+    console.log("FuncOne: ", n);
     funcOne(n + 1);
   }
 }
@@ -313,11 +299,11 @@ function funcOne(n) {
 funcOne(3);
 
 function funcTwo(n) {
-    if (n <= 0) {
-        return 0;
-    } else {
-        return n + funcTwo(n - 1);
-    }
+  if (n <= 0) {
+    return 0;
+  } else {
+    return n + funcTwo(n - 1);
+  }
 }
 
 console.log(funcTwo(4));
