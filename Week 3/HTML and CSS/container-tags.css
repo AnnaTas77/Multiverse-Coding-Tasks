@@ -1,0 +1,13 @@
+span {
+    color: #4E61F5;
+    font-weight: bold;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #FF7E66;
+    color: white;
+}
