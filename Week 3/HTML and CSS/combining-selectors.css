@@ -1,0 +1,53 @@
+/*
+ Ancestors Selectors
+*/
+
+/* leave as-is */
+#selectors * {
+    border: .1rem solid black;
+    margin: .2rem;
+    border-radius: .2rem;
+}
+
+/* ****** CODE BELOW THIS LINE ****** */
+/* No Separator: element with BOTH section AND .child  */
+section.child{
+    background-color: aqua;
+}
+
+  
+/* Space: element with .child whose ANCESTOR matches #selectors */
+
+#selectors .child{
+    background-color: yellow;
+}
+
+
+  
+/* , element with EITHER section OR .child */
+
+
+#selectors, .child {
+    background-color: rgb(166, 107, 221);
+}
+
+/* > */
+
+.parent > .sibling{
+    background-color: coral;
+}
+
+/* :last-child    the last element within its container (must be the last) that matches .sibling */
+
+.sibling:last-child{
+    background-color: blue;
+}
+  
+.parent:first-child{
+    background-color: lime;
+}
+/* :first-of-type    the first element of this type within its container (doesn't have to be the first of any type) that matches .sibling */
+
+.sibling:first-of-type{
+    background-color: pink;
+}

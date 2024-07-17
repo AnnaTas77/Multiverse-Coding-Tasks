@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Ancestors Selectors</title>
+  <link rel="stylesheet" href="./combining-selectors.css">
+</head>
+<body>
+  <h1>Ancestors Selectors</h1>
+  <div id="selectors">
+    <header id="grandparent">
+      Grandparent
+      <nav class="parent">
+        Parent
+        <div id="self" class="child">
+          Self
+          <section class="child">
+            Child
+            <div class="grandchild">
+              Grandchild
+            </div>
+          </section>
+        </div>
+        <section class="sibling">
+          Sibling
+          <div class="niece-nephew">
+            Niece/Nephew
+          </div>
+        </section>
+        <section class="sibling">
+          Sibling
+          <div class="niece-nephew">
+            Niece/Nephew
+          </div>
+        </section>
+      </nav>
+    </header>
+  </div>
+</body>
+</html>
