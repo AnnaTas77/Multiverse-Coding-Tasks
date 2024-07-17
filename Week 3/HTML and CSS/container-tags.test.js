@@ -4,7 +4,7 @@ const { JSDOM } = require("jsdom");
 require("@testing-library/jest-dom");
 
 const htmlFile = fs.readFileSync(
-  path.resolve(__dirname, "./index.html"),
+  path.resolve(__dirname, "./container-tags.html"),
   "utf8"
 );
 

@@ -17,9 +17,11 @@
         "fs": "^0.0.1-security",
         "jest": "^29.7.0",
         "jsdom": "^24.1.0",
-        "prompt-sync": "^4.2.0"
-    },
-    "devDependencies": {
-        "@testing-library/jest-dom": "^6.4.6"
+        "jsdom-global": "^3.0.2",
+        "prompt-sync": "^4.2.0",
+        "@testing-library/dom": "^9.3.4",
+        "@testing-library/jest-dom": "^6.4.2",
+        "jest-environment-jsdom": "^29.7.0",
+        "postcss": "^8.4.36"
     }
 }

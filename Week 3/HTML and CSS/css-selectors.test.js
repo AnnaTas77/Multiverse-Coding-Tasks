@@ -4,10 +4,13 @@ const { JSDOM } = require("jsdom");
 require("@testing-library/jest-dom");
 
 const htmlFile = fs.readFileSync(
-  path.resolve(__dirname, "./index.html"),
+  path.resolve(__dirname, "./css-selectors.html"),
   "utf8"
 );
-const cssFile = fs.readFileSync(path.resolve(__dirname, "./style.css"), "utf8");
+const cssFile = fs.readFileSync(
+  path.resolve(__dirname, "./css-selectors.css"),
+  "utf8"
+);
 
 const { window } = new JSDOM(htmlFile);
 const { document } = window;

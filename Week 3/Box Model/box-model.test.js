@@ -7,7 +7,10 @@ const htmlFile = fs.readFileSync(
   path.resolve(__dirname, "./box-model.html"),
   "utf8"
 );
-const cssFile = fs.readFileSync(path.resolve(__dirname, "./style.css"), "utf8");
+const cssFile = fs.readFileSync(
+  path.resolve(__dirname, "./box-model.css"),
+  "utf8"
+);
 
 const { window } = new JSDOM(htmlFile);
 const { document } = window;
