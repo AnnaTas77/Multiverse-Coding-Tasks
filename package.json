@@ -13,8 +13,13 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "file-system": "^2.2.2",
+        "fs": "^0.0.1-security",
         "jest": "^29.7.0",
         "jsdom": "^24.1.0",
         "prompt-sync": "^4.2.0"
+    },
+    "devDependencies": {
+        "@testing-library/jest-dom": "^6.4.6"
     }
 }
