@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+.flexChild1 {
+    background-color: #FE7B66;
+}
+.flexChild2 {
+    background-color: #59D8A1;
+}
+.flexChild3 {
+    background-color: #FFE252;
+}
+
+.container div {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 1rem;
+    padding: .5rem;
+}
+
+.container {
+    border: .3rem solid #64ABFE;
+    width: 100vw;
+    height: 100vh;
+    /* Write your code here */
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}

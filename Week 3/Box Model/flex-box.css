@@ -1,0 +1,20 @@
+.flexChild {
+    background-color: #66ABFF;
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    font-size: 30px;
+    border: grey solid 1px;
+    padding: 2em;
+    margin: 10px;
+}
+
+
+.container {
+    background-color: #5BD7A2;
+    margin: 1rem;
+    height: 50%;
+    width: 100%;
+    /* Write your code here */
+    display: flex;
+    flex-direction: row-reverse;
+}
