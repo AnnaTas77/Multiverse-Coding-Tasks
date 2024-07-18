@@ -1,0 +1,29 @@
+html {
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    background-color: #5BD7A2;
+}
+
+.flexChild {
+    background-color: #66ABFF;
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    font-size: 30px;
+    border: grey solid 1px;
+    padding: 2em;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+
+.flexbox {
+    margin: 1rem;
+    height: 50%;
+    width: 100%;
+    /* WRITE CODE BELOW THIS LINE */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
