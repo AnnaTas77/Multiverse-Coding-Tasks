@@ -11,6 +11,7 @@ class Bag {
 // Block to handle error message
 try {
   const bag = new Bag();
+  console.log("My bag: ", bag);
 } catch (err) {
   console.log(err);
 }
