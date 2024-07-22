@@ -1,7 +1,7 @@
 // Write your code here
 class Triangle {
-  constructor(base, height, corners) {
-    (this.base = base), (this.height = height), (this.corners = 3);
+  constructor(base, height, corners = 3) {
+    (this.base = base), (this.height = height), (this.corners = corners);
   }
 
   taller(dh) {
@@ -38,6 +38,23 @@ class Account {
 const acc = new Account("xyz", 10);
 console.log(acc.deposit(5, "GBP"));
 
+class Book {
+  constructor(title, author, ratings) {
+    (this.title = title), (this.author = author), (this.ratings = []);
+  }
+
+  addRating(rating) {
+    this.ratings.push(rating);
+  }
+
+  averageRating() {
+    let avarage = 0;
+    this.ratings.forEach((item) => {
+      avarage += item;
+    });
+    return avarage / this.ratings.length;
+  }
+}
 
 // DO NOT EDIT CODE BELOW
-module.exports = { Triangle, Account };
+module.exports = { Triangle, Account, Book };
