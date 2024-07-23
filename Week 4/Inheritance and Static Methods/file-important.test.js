@@ -1,4 +1,4 @@
-const { Text, Image, File } = require("./file-important.js");
+const { Text, Image, File } = require("./file-important");
 
 describe("A text", () => {
   it("has a name, extension and size", () => {
