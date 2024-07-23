@@ -22,8 +22,33 @@ class Circle extends Shape {
   }
 }
 
+class Character {
+  constructor(health, speed, attackPower) {
+    this.health = health;
+    this.speed = speed;
+    this.attackPower = attackPower;
+  }
+
+  move() {
+    return `The character moves at a speed of ${this.speed}`;
+  }
+}
+
+class Warrior extends Character {
+  constructor(health, speed, attackPower, weapon) {
+    super(health, speed, attackPower);
+    this.weapon = weapon;
+  }
+
+  useWeapon() {
+    return `The warrior attacks with a ${this.weapon}`;
+  }
+}
+
 // DO NOT EDIT CODE BELOW
 module.exports = {
   Shape,
   Circle,
+  Character,
+  Warrior,
 };
