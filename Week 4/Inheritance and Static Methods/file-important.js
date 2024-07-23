@@ -40,8 +40,8 @@ class Text extends File {
 }
 
 // const t1 = new Text("Annihilation", "txt", 100);
-//  const i1 = new Image("Cats", "png", 500);
-//  console.log(File.remainingSpace())
+// const i1 = new Image("Cats", "png", 500);
+// console.log(File.remainingSpace())
 
 // DO NOT EDIT CODE BELOW
 module.exports = {
