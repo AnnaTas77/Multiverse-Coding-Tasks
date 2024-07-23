@@ -1,4 +1,4 @@
-const { Text, Image, File } = require("./inheritance-extension-1-important.js");
+const { Text, Image, File } = require("./file-important.js");
 
 describe("A text", () => {
   it("has a name, extension and size", () => {
