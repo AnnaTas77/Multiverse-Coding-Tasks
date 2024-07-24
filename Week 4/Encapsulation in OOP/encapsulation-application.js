@@ -33,9 +33,7 @@ class BankAccount {
   }
 
   getBalance() {
-    let balanceToStr = String(this.#balance.toFixed(2));
-    let strArray = balanceToStr.split(".");
-    return `£${strArray[0]}.${strArray[1]}`;
+    return `£${this.#balance.toFixed(2)}`;
   }
 
   deposit(amount) {
