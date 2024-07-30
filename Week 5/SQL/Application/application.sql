@@ -126,6 +126,9 @@ VALUES
     ('Reese WitherFork', 'reesey@email.com', 1)
 ;
 
+SELECT * FROM companies;
+SELECT * FROM employees;
+
 SELECT companies.name, employees.name, employees.email
 FROM companies
 LEFT JOIN employees
