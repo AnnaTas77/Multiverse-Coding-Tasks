@@ -1,7 +1,7 @@
-const db = require("../connection/connection.js");
+const db = require("./connection/connection.js");
 const values = require("./seed.json");
 
-const { initialize } = require("./product.js");
+const { initialize } = require("./main.js");
 
 let allProducts;
 let foundItem;
