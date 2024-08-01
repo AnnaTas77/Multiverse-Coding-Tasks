@@ -1,3 +1,4 @@
+#!/bin/node
 const path = require("path");
 const { Sequelize, Model, DataTypes } = require("sequelize");
 

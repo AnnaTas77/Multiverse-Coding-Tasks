@@ -1,16 +1,22 @@
-const { Order, Invoice } = require("./models/index.js");
+#!/bin/node
 const { db } = require("./db/connection.js");
+const { Cart, Product } = require("./models/index");
+
 async function seed() {
   await db.sync({ force: true });
-  Order.bulkCreate([
-    { name: "Markers", description: "Color what you want", total: 5.99 },
-    { name: "Pens", description: "Fancy pens", total: 4.99 },
-    { name: "Bulbs", description: "Light up your life", total: 6.99 },
-  ]).then(() => console.log("Order data have been saved"));
-  Invoice.bulkCreate([
-    { invoiceNumber: 123, orderId: 1 },
-    { invoiceNumber: 456, orderId: 2 },
-    { invoiceNumber: 789, orderId: 3 },
-  ]).then(() => console.log("Invoice have been created"));
+  await Cart.bulkCreate([
+    { total: 22.5 },
+    { total: 300.23 },
+    { total: 1521.09 },
+  ]);
+
+  await Product.bulkCreate([
+    { item: "Laptop", price: 1500 },
+    { item: "Tablet", price: 800 },
+    { item: "Strawberries", price: 4.99 },
+    { item: "Mangos", price: 2.99 },
+    { item: "Headphones", price: 50 },
+  ]);
 }
-seed();
+
+module.exports = seed;
