@@ -1,0 +1,27 @@
+[
+    {
+      "title": "My First Blog Post",
+      "post": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.",
+      "postNumber": 1
+    },
+    {
+      "title": "Why I Love JavaScript",
+      "post": "JavaScript is my favorite programming language because it's so versatile and powerful.",
+      "postNumber": 2
+    },
+    {
+      "title": "How to Build a CRUD App with Node.js and Sequelize",
+      "post": "In this tutorial, I'll show you how to create a simple CRUD app using Node.js and Sequelize.",
+      "postNumber": 3
+    },
+    {
+      "title": "My Favorite Books",
+      "post": "Some of my favorite books include 'To Kill a Mockingbird', 'The Great Gatsby', and '1984'.",
+      "postNumber": 4
+    },
+    {
+      "title": "The Benefits of Meditation",
+      "post": "Meditation can help reduce stress, improve focus, and promote overall well-being.",
+      "postNumber": 5
+    }
+  ]
