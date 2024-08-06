@@ -35,13 +35,28 @@ app.get("/animals/:id", (req, res) => {
   res.status(200).json(currentAnimal);
 });
 
-app.put("/animals/:id", (req,res) => {
-  animals[req.params.id-1] = ({
-      name: req.body.name,
-      color: req.body.color})
-  res.json(animals)
-})
+app.delete("/animals/:id", (req, res) => {
+  const animalId = req.params.id;
+  const animalArrayIndex = animalId - 1;
+  animals.splice(animalArrayIndex, 1);
+  res.json(animals);
+});
 
+app.put("/animals/:id", (req, res) => {
+  animals[req.params.id - 1] = {
+    name: req.body.name,
+    color: req.body.color,
+  };
+  res.json(animals);
+});
+
+app.post("/animals", (req, res) => {
+  animals.push({
+    name: req.body.name,
+    color: req.body.color,
+  });
+  res.json(animals);
+});
 
 // DO NOT EDIT CODE BELOW
 module.exports = app;
