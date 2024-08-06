@@ -19,6 +19,7 @@ const animals = [
   },
 ];
 // DO NOT EDIT CODE ABOVE
+app.use(express.json());
 
 app.get("/animals/:id", (req, res) => {
   // The ID specified in the URL path should begin with 1, while array indices begin with 0.
@@ -33,6 +34,14 @@ app.get("/animals/:id", (req, res) => {
 
   res.status(200).json(currentAnimal);
 });
+
+app.put("/animals/:id", (req,res) => {
+  animals[req.params.id-1] = ({
+      name: req.body.name,
+      color: req.body.color})
+  res.json(animals)
+})
+
 
 // DO NOT EDIT CODE BELOW
 module.exports = app;
