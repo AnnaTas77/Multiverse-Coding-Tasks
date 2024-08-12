@@ -1,0 +1,9 @@
+.card {
+    width: 18rem;
+}
+
+.app {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
