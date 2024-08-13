@@ -1,0 +1,13 @@
+.card {
+    width: 18rem;
+}
+
+.app {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+html, #root {
+    background-color: #4C61F4;
+}
