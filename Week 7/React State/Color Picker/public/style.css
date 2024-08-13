@@ -1,0 +1,30 @@
+.card {
+    width: 18rem;
+}
+
+.app {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+button {
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  font-size: 1.5rem;
+  border: 0.1rem solid black;
+  margin: 2rem;
+}
+
+button.selected {
+  border: 0.3rem solid black;
+  font-weight: bold;
+}
