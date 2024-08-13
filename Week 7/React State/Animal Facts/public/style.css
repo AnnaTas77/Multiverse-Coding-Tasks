@@ -1,0 +1,13 @@
+#app {
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+}
+
+.card {
+    width: 50%;
+}
+
+h1, p {
+    text-align: center;
+}
