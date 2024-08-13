@@ -2,15 +2,17 @@ import React from "react";
 
 function Color({ color, updateColor, selectedColor }) {
   return (
-    <button
-      className={color === selectedColor ? "selected" : ""}
-      style={{ color: color }}
-      onClick={() => {
-        updateColor(color);
-      }}
-    >
-      {color}
-    </button>
+    <div style={{ background: selectedColor }}>
+      <button
+        className={color === selectedColor ? "selected" : ""}
+        style={{ color: color }}
+        onClick={() => {
+          updateColor(color);
+        }}
+      >
+        {color}
+      </button>
+    </div>
   );
 }
 

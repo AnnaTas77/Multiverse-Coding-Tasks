@@ -8,24 +8,19 @@ function App() {
     setSelectedColor(color);
   };
 
+  const colorsArray = ["red", "green", "blue"];
+
   return (
     <>
       <h1>Color Picker</h1>
-      <Color
-        color={"red"}
-        updateColor={updateColor}
-        selectedColor={selectedColor}
-      />
-      <Color
-        color={"green"}
-        updateColor={updateColor}
-        selectedColor={selectedColor}
-      />
-      <Color
-        color={"blue"}
-        updateColor={updateColor}
-        selectedColor={selectedColor}
-      />
+      {colorsArray.map((currentColor, index) => (
+        <Color
+          key={index}
+          color={currentColor}
+          updateColor={updateColor}
+          selectedColor={selectedColor}
+        />
+      ))}
     </>
   );
 }
