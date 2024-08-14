@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Ubuntu:wght@500&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+body {
+    background-color: #AEADF0;
+    font-family: 'Ubuntu';
+    font-size: 1.5rem;
+    color: #565676;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: .3rem;
+  margin: .3rem 0px;
+  background-color: #D8DCFF;
+  padding: 2rem;
+}
+
+.step > * {
+  margin: .2rem;
+}
+
+
+button {
+  padding: .2rem;
+  margin: .3rem;
+  color: black;
+}
+
+button.red, button.green, button.blue {
+  color: white;
+}
+button.red {
+  background-color: red;
+}
+button.green {
+  background-color: green;
+}
+button.blue {
+  background-color: blue;
+}
+button.black {
+  background-color: lightgray;
+}
+
+.magical {
+    color: #D8DCFF;
+    background-color: #C38D94;
+    padding: .2rem;
+    border-radius: .2rem;
+}
+
+.magical::after {
+    content: ' 🪄';
+}
+
+.magical::before {
+    content: '🧙‍♂️ ';
+}
