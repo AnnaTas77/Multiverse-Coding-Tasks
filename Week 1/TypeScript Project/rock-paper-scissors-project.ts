@@ -1,5 +1,5 @@
 /*Rock, Paper, Scissors Coding Project
-Directions: Complete the following steps:
+Directions: Complete the following steps:   
 
 randomChoice()
 GOAL: Create a randomChoice function that returns a random selection of either "rock", "paper", or "scissors" every time the function is called.
@@ -31,51 +31,66 @@ Create a variable called player1 and store the result of randomChoice() in the v
 Create a variable called player2 and store the result of a separate call of randomChoice() in the variable.
 Create a variable called result and call winner with the values stored in player1 and player2.
 Log the values of player1, player2, and result to verify your game plays correctly!*/
+
 /** */
-var randomNumber = function () {
-    var choice = Math.floor(Math.random() * 3);
-    if (choice === 0)
-        return "rock";
-    if (choice === 1)
-        return "paper";
-    if (choice === 2)
-        return "scissors";
-    return '';
+
+const randomNumber = (): string  => {
+  const choice = Math.floor(Math.random() * 3);
+  if (choice === 0) return "rock";
+  if (choice === 1) return "paper";
+  if (choice === 2) return "scissors";
+  return ''
 };
-var pickWinner = function (player1Choice, player2Choice) {
-    if ((player1Choice !== "rock" &&
-        player1Choice !== "paper" &&
-        player1Choice !== "scissors") ||
-        (player2Choice !== "rock" &&
-            player2Choice !== "paper" &&
-            player2Choice !== "scissors")) {
-        return "Invalid input.";
-    }
-    if (player1Choice === player2Choice) {
-        return "It's a tie!";
-    }
-    if ((player1Choice === "rock" && player2Choice === "scissors") ||
-        (player1Choice === "paper" && player2Choice === "rock") ||
-        (player1Choice === "scissors" && player2Choice === "paper")) {
-        return "Player 1 Wins!";
-    }
-    if ((player2Choice === "rock" && player1Choice === "scissors") ||
-        (player2Choice === "paper" && player1Choice === "rock") ||
-        (player2Choice === "scissors" && player1Choice === "paper")) {
-        return "Player 2 Wins!";
-    }
-    return '';
+
+const pickWinner = (player1Choice:string, player2Choice:string): string => {
+  if (
+    (player1Choice !== "rock" &&
+      player1Choice !== "paper" &&
+      player1Choice !== "scissors") ||
+    (player2Choice !== "rock" &&
+      player2Choice !== "paper" &&
+      player2Choice !== "scissors")
+  ) {
+    return "Invalid input.";
+  }
+
+  if (player1Choice === player2Choice) {
+    return "It's a tie!";
+  }
+
+  if (
+    (player1Choice === "rock" && player2Choice === "scissors") ||
+    (player1Choice === "paper" && player2Choice === "rock") ||
+    (player1Choice === "scissors" && player2Choice === "paper")
+  ) {
+    return "Player 1 Wins!";
+  }
+
+  if (
+    (player2Choice === "rock" && player1Choice === "scissors") ||
+    (player2Choice === "paper" && player1Choice === "rock") ||
+    (player2Choice === "scissors" && player1Choice === "paper")
+  ) {
+    return "Player 2 Wins!";
+  }
+
+  return ''
 };
-var playerA = randomNumber();
-var playerB = randomNumber();
+
+const playerA = randomNumber();
+const playerB = randomNumber();
+
 console.log("Player 1 chose: ", playerA);
 console.log("Player 2 chose: ", playerB);
-var result = pickWinner(playerA, playerB);
+
+const result = pickWinner(playerA, playerB);
+
 console.log(result);
 console.log(pickWinner("paper", "chicken"));
 console.log(pickWinner("chicken", "chicken"));
+
 // DO NOT EDIT CODE BELOW
 module.exports = {
-    randomNumber: randomNumber,
-    pickWinner: pickWinner,
+  randomNumber,
+  pickWinner,
 };
