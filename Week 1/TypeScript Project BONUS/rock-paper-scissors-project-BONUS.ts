@@ -67,6 +67,38 @@ const winner = (player1Choice:string, player2Choice:string):string => {
   return "ERROR: Should never happen!";
 };
 
+interface GameState {
+  player1choice: string;
+  player2choice: string;
+  result: string;
+  round: number;
+  player1score: number;
+  player2score: number;
+}
+
+// class GameState {
+//     player1choice: string;
+//     player2choice: string;
+//     result: string;
+//     round: number;
+//     player1score: number;
+//     player2score: number;
+
+//     constructor(player1choice: string,
+//       player2choice: string,
+//       result: string,
+//       round: number,
+//       player1score: number,
+//       player2score: number) {
+//         this.player1choice = player1choice;
+//         this.player2choice = player2choice;
+//         this.result = result;
+//         this.round = round;
+//         this.player1score = player1score;
+//         this.player2score = player2score;
+//       }
+// }
+
 
 
 const score = (gameObject:GameState) => {
@@ -83,28 +115,6 @@ const score = (gameObject:GameState) => {
   }
 };
 
-class GameState {
-    player1choice: string;
-    player2choice: string;
-    result: string;
-    round: number;
-    player1score: number;
-    player2score: number;
-
-    constructor(player1choice: string,
-      player2choice: string,
-      result: string,
-      round: number,
-      player1score: number,
-      player2score: number) {
-        this.player1choice = player1choice;
-        this.player2choice = player2choice;
-        this.result = result;
-        this.round = round;
-        this.player1score = player1score;
-        this.player2score = player2score;
-      }
-}
 
 // Creates a readline interface that we can use in our code.
 const rl = readline.createInterface({
@@ -128,7 +138,14 @@ function handleUserInput(userInput:string, gameState: GameState):void {
 }
 
 async function askQuestions() {
-  const gameState: GameState = new GameState('', '', '', 0, 0 , 0);
+  const gameState: GameState = {
+    player1choice: '',
+    player2choice: '',
+    result: '',
+    round: 0,
+    player1score: 0,
+    player2score: 0,
+  }
 
   let i:number = 10;
   while (i > 0) {
@@ -149,5 +166,8 @@ async function askQuestions() {
 }
 
 askQuestions();
+
+
+module.exports={randomChoice, winner}
 
 

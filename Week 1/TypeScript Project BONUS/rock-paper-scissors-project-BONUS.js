@@ -92,6 +92,27 @@ var winner = function (player1Choice, player2Choice) {
     }
     return "ERROR: Should never happen!";
 };
+// class GameState {
+//     player1choice: string;
+//     player2choice: string;
+//     result: string;
+//     round: number;
+//     player1score: number;
+//     player2score: number;
+//     constructor(player1choice: string,
+//       player2choice: string,
+//       result: string,
+//       round: number,
+//       player1score: number,
+//       player2score: number) {
+//         this.player1choice = player1choice;
+//         this.player2choice = player2choice;
+//         this.result = result;
+//         this.round = round;
+//         this.player1score = player1score;
+//         this.player2score = player2score;
+//       }
+// }
 var score = function (gameObject) {
     if (gameObject.result.includes("1")) {
         gameObject.player1score += 1;
@@ -103,17 +124,6 @@ var score = function (gameObject) {
         return;
     }
 };
-var GameState = /** @class */ (function () {
-    function GameState(player1choice, player2choice, result, round, player1score, player2score) {
-        this.player1choice = player1choice;
-        this.player2choice = player2choice;
-        this.result = result;
-        this.round = round;
-        this.player1score = player1score;
-        this.player2score = player2score;
-    }
-    return GameState;
-}());
 // Creates a readline interface that we can use in our code.
 var rl = readline.createInterface({
     input: process.stdin,
@@ -134,7 +144,14 @@ function askQuestions() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    gameState = new GameState('', '', '', 0, 0, 0);
+                    gameState = {
+                        player1choice: '',
+                        player2choice: '',
+                        result: '',
+                        round: 0,
+                        player1score: 0,
+                        player2score: 0,
+                    };
                     i = 10;
                     _a.label = 1;
                 case 1:
@@ -161,3 +178,4 @@ function askQuestions() {
     });
 }
 askQuestions();
+module.exports = { randomChoice: randomChoice, winner: winner };
